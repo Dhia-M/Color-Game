@@ -1,0 +1,50 @@
+.navbar {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
+.form-group{
+  margin-left: 250px;
+  width: 60%;
+  margin-bottom: 50px;
+}
+.sr-only{
+  margin-right: 85%;
+  margin-bottom: 7px;
+}
+.sr-only0{
+  margin-right: 90%;
+  margin-bottom: 7px;
+}
+.container {
+  margin: 20px;
+  text-align: center;
+  background-color: white;
+
+}
+.input-group-text{
+  border-radius: 0;
+  background-color: rgba(211, 211, 211, 0.54);
+}
+
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.app-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.invalid-credentials-error{
+  background-color: red;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 250px;
+  margin-bottom: 15px;
+  width: 60%;
+}

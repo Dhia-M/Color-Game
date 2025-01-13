@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <span class="app-name">Color Game</span>
+</nav>
+
+<div class="container">
+  <h2>Login</h2>
+  <div *ngIf="invalidCredentialsError" class="invalid-credentials-error">
+    {{ invalidCredentialsError }}
+  </div>
+  <form (ngSubmit)="onSubmit()">
+    <!-- Email input with input-group -->
+    <div class="form-group">
+      <label class="sr-only0" for="email">Email</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">&#64;</div>
+        </div>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          [(ngModel)]="email"
+          name="email"
+          required
+        />
+      </div>
+      <div *ngIf="emailError" class="error">{{ emailError }}</div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-group">
+      <label class="sr-only" for="password">Password</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="bi bi-lock"></i> <!-- Lock icon inside input-group -->
+          </div>
+        </div>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div *ngIf="passwordError" class="error">{{ passwordError }}</div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>

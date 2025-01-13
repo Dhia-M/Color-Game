@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <span class="app-name">Color Game</span>
+  <button (click)="logout()">Logout</button>
+</nav>
+
+<div class="container">
+  <form (ngSubmit)="generateGrid()">
+    <div>
+      <label class="label1" for="x">Rows :</label>
+      <input class="rowinp" id="x" type="number" [(ngModel)]="rows" name="rows" required />
+    </div>
+    <div>
+      <label class="label2" for="y">Columns :</label>
+      <input class="colinp" id="y" type="number" [(ngModel)]="columns" name="columns" required />
+    </div>
+    <button class="gen" type="submit">Generate</button>
+  </form>
+  <div class="grid" [style.gridTemplateColumns]="'repeat(' + columns + ', 1fr)'">
+    <div
+      class="cell"
+      *ngFor="let cell of cells"
+      (click)="changeColor(cell)"
+      [style.background]="cell.color"
+    ></div>
+  </div>
+</div>
