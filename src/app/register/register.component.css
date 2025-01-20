@@ -1,0 +1,19 @@
+.navbar {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
+.form-group{
+  margin-left: 250px;
+  width: 60%;
+  margin-bottom: 50px;
+}
+.container {
+  margin: 20px;
+  text-align: center;
+  background-color: white;
+
+}
+h2{
+  margin: 40px;
+}

@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // Adjust path to auth.service.ts
+import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-landing-page',
-  imports: [FormsModule,CommonModule], // Add FormsModule
-
+  imports: [FormsModule,CommonModule,HttpClientModule],
+  standalone: true,
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
@@ -35,22 +37,18 @@ export class LandingPageComponent {
     this.emailError = null;
     this.passwordError = null;
 
-    // Check if email is empty
     if (!this.email) {
       this.emailError = 'Email is required';
     } else {
-      // Check if the name part (before @) is longer than 6 characters
-      const emailName = this.email.split('@')[0];  // Get the part before '@'
+      const emailName = this.email.split('@')[0];
       if (emailName.length < 6) {
         this.emailError = 'Email name must be longer than 6 characters';
       }
-      // Check if email format is valid (only after the length check)
       else if (!this.validateEmail(this.email)) {
         this.emailError = 'Invalid email format';
       }
     }
 
-    // Check if password is empty
     if (!this.password) {
       this.passwordError = 'Password is required';
     } else if (this.password.length <= 6) {
@@ -60,15 +58,18 @@ export class LandingPageComponent {
       this.passwordError = 'Password must include a number';
     }
 
-    // If no errors, proceed with login
     if (!this.emailError && !this.passwordError) {
       const isAuthenticated = this.authService.login(this.email, this.password);
       if (isAuthenticated) {
         this.router.navigate(['/game']);
       } else {
-        this.invalidCredentialsError = 'Invalid credentials';  // Set the invalid credentials error
+        this.invalidCredentialsError = 'Invalid credentials';
       }
     }
+
+  }
+  navigateToRegister() {
+    this.router.navigate(['/register']); 
   }
 
 }
